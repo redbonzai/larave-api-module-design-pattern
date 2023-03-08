@@ -1,0 +1,15 @@
+id: 41092
+name: laravel-api
+environments:
+    production:
+        memory: 1024
+        cli-memory: 512
+        runtime: 'php-8.1:al2'
+        concurrency: 30 # reserved concurrent containers per function call.
+        queue-concurrency: 10
+        cli-concurrency: 1
+        # capacity: 30 # provisioned concurrency is not free
+        build:
+            - 'composer install --no-dev'
+            - 'php artisan event:cache'
+          # - 'npm ci && npm run build && rm -rf node_modules'
